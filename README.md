@@ -52,12 +52,31 @@ Sabre de Luz (Mace Windu) 990.29<br>
 4<br>
 
 - Qual o funcionário contratado há mais tempo na empresa?<br>
+`SELECT * FROM momento.funcionarios ORDER BY data_contratacao;`<br>
+id: 100<br>
 
 - Qual o funcionário contratado há menos tempo na empresa?<br>
+`SELECT * FROM momento.funcionarios ORDER BY data_contratacao DESC;`<br>
+id: 179<br>
 
 - Quem são os funcionários com mais tempo na empresa, considerando a data_contratacao?<br>
+`SELECT * FROM momento.funcionarios ORDER BY data_contratacao;`<br>
+id: 100, 200, 101<br>
 
 - Como a média salarial dos funcionários da "Momento" evoluiu nos últimos anos? Dica: utilize a função AVG() para calcular a média salarial dos funcionários. e GROUP BY para agrupar os resultados por ano.<br>
+`SELECT YEAR(data_contratacao) AS ano, AVG(salario) AS media_salarial FROM momento.funcionarios GROUP BY ano ORDER BY ano;`<br>
+1987	14200.000000<br>
+1989	17000.000000<br>
+1990	9000.000000<br>
+1991	6000.000000<br>
+1993	17000.000000<br>
+1994	12847.500000<br>
+1995	5500.000000<br>
+1996	9750.000000<br>
+1997	6450.000000<br>
+1998	5816.666667<br>
+1999	5150.000000<br>
+2000	19650.000000<br>
 
 ## Médias salariais
 - Qual a média salarial dos funcionários da empresa Momento, excluindo-se o CEO, CMO e CFO?<br>
