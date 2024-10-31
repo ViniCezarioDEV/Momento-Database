@@ -1,49 +1,90 @@
 # Momento-Database
 
-Quantos funcionarios da empresa Momento trabalham no departamento de vendas?
-SELECT COUNT(*) FROM momento.funcionarios WHERE departamento_id = 8;
-8
+## Departamento de Tecnologia
+- Inclua suas próprias informações no departamento de Tecnologia da empresa.<br>
+`INSERT INTO momento.funcionarios (primeiro_nome, sobrenome, email, senha, telefone, data_contratacao, cargo_id, salario, gerente_id, departamento_id) VALUES ('Vinicius', 'Cezario', 'viniciusamcezario@outllok.com', 'circulo', '11911111111', 2024-10-29, 9, 10000, 103, 6);`<br>
 
-Inclua suas próprias informações no departamento de Tecnologia da empresa.
-INSERT INTO momento.funcionarios (primeiro_nome, sobrenome, email, senha, telefone, data_contratacao, cargo_id, salario, gerente_id, departamento_id) VALUES ('Vinicius', 'Cezario', 'viniciusamcezario@outllok.com', 'circulo', '11911111111', 2024-10-29, 9, 10000, 103, 6);
+- Agora diga, quantos funcionários temos ao total na empresa?<br>
+`SELECT COUNT(*) FROM momento.funcionarios;`<br>
+42<br>
 
-Agora diga, quantos funcionários temos ao total na empresa?
-SELECT COUNT(*) FROM momento.funcionarios;
-42
+- E quanto ao Departamento de Tecnologia?<br>
+`SELECT COUNT(*) FROM momento.funcionarios WHERE departamento_id = 6;`<br>
+6<br>
 
-E quanto ao Departamento de Tecnologia?
-SELECT COUNT(*) FROM momento.funcionarios WHERE departamento_id = 6;
-6
+## Departamento de Vendas
+- Quantos funcionários trabalham no Departamento de Vendas? Use uma consulta para descobrir o número total de funcionários alocados nesse departamento.<br>
+`SELECT COUNT(*) FROM momento.funcionarios WHERE departamento_id = 8;`<br>
+8<br>
 
-Quanto o departamento de Vendas gasta em salários?
-SELECT SUM(salario) FROM momento.funcionarios;
-379830.00
+## Salários no Departamento de Vendas
 
-Um novo departamento foi criado. O departamento de Inovações. Ele será locado no Brasil. Por favor, adicione-o no banco de dados da empresa colocando quaisquer informações que você achar relevantes.
-INSERT INTO momento.escritorios(escritorio_nome, endereco, cep, cidade, estado_provincia, pais_id) VALUES ('Jalin Habey', 'Rua Casa do caixa prego', '08537150', 'São Paulo', 'São Paulo', 'BR');
-INSERT INTO momento.departamentos(departamento_nome, escritorio_id) VALUES('Inovação', 3901);
+- Qual é o custo total dos salários do pessoal de Vendas? Isso nos ajuda a entender o orçamento do departamento!<br>
+`SELECT SUM(salario) FROM momento.funcionarios WHERE departamento_id = 8;`<br>
+51500.00<br>
 
+- Quanto o departamento de Vendas gasta em salários?<br>
+`SELECT SUM(salario) FROM momento.funcionarios WHERE departamento_id = 8;`<br>
+51500.00<br>
 
-O departamento de Inovações está sem funcionários. Inclua alguns colegas de turma nesse departamento.
-INSERT INTO momento.funcionarios (primeiro_nome, sobrenome, email, senha, telefone, data_contratacao, cargo_id, salario, gerente_id, departamento_id) VALUES ('Paola', 'Karossela', 'paolak198@outllok.com', 'defaultPass', '11911111111', '2024-10-29', 18, 5000, null, 14);
-INSERT INTO momento.funcionarios (primeiro_nome, sobrenome, email, senha, telefone, data_contratacao, cargo_id, salario, gerente_id, departamento_id) VALUES ('enrick', 'fogaça', 'enriquecendo@outllok.com', 'defaultPass', '11911111111', '2024-10-29', 18, 5000, null, 14);
-INSERT INTO momento.funcionarios (primeiro_nome, sobrenome, email, senha, telefone, data_contratacao, cargo_id, salario, gerente_id, departamento_id) VALUES ('erick', 'jakan', 'pesadeloonkithcen@outllok.com', 'defaultPass', '11911111111', '2024-10-29', 18, 5000, null, 14);
+- Quais são os produtos mais vendidos e quais têm pouca ou nenhuma saída?<br>
+`SELECT * FROM momento.produtos;`<br>
+`SELECT * FROM momento.vendas ORDER BY quantidade;`<br>
+Batarangs Oficiais, Laço da Honestidade, Uniforme do Superman<br>
 
-Quantos funcionarios a empresa Momento tem agora?
-SELECT COUNT(*) FROM momento.funcionarios;
-45
+- Qual é o produto mais caro no inventário da empresa?<br>
+`SELECT * FROM momento.produtos ORDER BY produto_price DESC LIMIT 1;`<br>
+Sabre de Luz (Mace Windu) 990.29<br>
 
-Quantos funcionários da empresa Momento possuem conjuges?
-SELECT COUNT(*) FROM momento.dependentes WHERE relacionamento LIKE '%conjuge%';
-4
+## Departamento de Inovações
+- Um novo departamento foi criado. O departamento de Inovações. Ele será locado no Brasil. Por favor, adicione-o no banco de dados da empresa colocando quaisquer informações que você achar relevantes.<br>
+`INSERT INTO momento.escritorios(escritorio_nome, endereco, cep, cidade, estado_provincia, pais_id) VALUES ('Omar silvestre', 'Rua Casa do caixa prego', '08537150', 'São Paulo', 'São Paulo', 'BR');`<br>
+`INSERT INTO momento.departamentos(departamento_nome, escritorio_id) VALUES('Inovação', 3901);`<br>
 
-Qual a média salarial dos funcionários da empresa Momento, excluindo-se o CEO?
-SELECT AVG(salario) FROM momento.funcionarios WHERE NOT cargo_id = 4;
-8427.954545
+- O departamento de Inovações está sem funcionários. Inclua alguns colegas de turma nesse departamento.<br>
+`INSERT INTO momento.funcionarios (primeiro_nome, sobrenome, email, senha, telefone, data_contratacao, cargo_id, salario, gerente_id, departamento_id) VALUES ('Paola', 'Karossela', 'paolak198@outllok.com', 'defaultPass', '11911111111', '2024-10-29', 18, 5000, null, 14);`<br>
+`INSERT INTO momento.funcionarios (primeiro_nome, sobrenome, email, senha, telefone, data_contratacao, cargo_id, salario, gerente_id, departamento_id) VALUES ('enrick', 'fogaça', 'enriquecendo@outllok.com', 'defaultPass', '11911111111', '2024-10-29', 18, 5000, null, 14);`<br>
+`INSERT INTO momento.funcionarios (primeiro_nome, sobrenome, email, senha, telefone, data_contratacao, cargo_id, salario, gerente_id, departamento_id) VALUES ('erick', 'jakan', 'pesadeloonkithcen@outllok.com', 'defaultPass', '11911111111', '2024-10-29', 18, 5000, null, 14);`<br>
 
-Qual a média salarial do departamento de tecnologia?
-SELECT AVG(salario) FROM momento.funcionarios WHERE departamento_id = 6;
-6466.666667
+## Funcionários
+- Quantos funcionários da empresa Momento possuem conjuges?<br>
+`SELECT COUNT(*) FROM momento.dependentes WHERE relacionamento LIKE '%conjuge%';`<br>
+4<br>
+
+- Qual o funcionário contratado há mais tempo na empresa?<br>
+
+- Qual o funcionário contratado há menos tempo na empresa?<br>
+
+- Quem são os funcionários com mais tempo na empresa, considerando a data_contratacao?<br>
+
+- Como a média salarial dos funcionários da "Momento" evoluiu nos últimos anos? Dica: utilize a função AVG() para calcular a média salarial dos funcionários. e GROUP BY para agrupar os resultados por ano.<br>
+
+## Médias salariais
+- Qual a média salarial dos funcionários da empresa Momento, excluindo-se o CEO, CMO e CFO?<br>
+`SELECT AVG(salario) FROM momento.funcionarios WHERE NOT cargo_id IN (4,7,10);`<br>
+8442.894737<br>
+
+- Qual a média salarial do departamento de tecnologia?<br>
+`SELECT AVG(salario) FROM momento.funcionarios WHERE departamento_id = 6;`<br>
+6466.666667<br>
+
+- Qual o departamento com a maior média salarial?<br>
+`SELECT AVG(salario) AS media_salario FROM momento.funcionarios WHERE departamento_id IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13) GROUP BY departamento_id ORDER BY media_salario DESC LIMIT 1;`<br>
+21815.000000<br>
+
+- Qual o departamento com o menor número de funcionários?<br>
+
+## Produtos
+- Pensando na relação quantidade e valor unitario, qual o produto mais valioso da empresa?<br>
+
+- Qual o produto mais vendido da empresa?<br>
+
+- Qual o produto menos vendido da empresa?<br>
+
+Escritórios
+- Quantos escritórios a "Momento" possui em cada região? (Dica: relacione as tabelas regioes e escritorios).<br>
+
+- Qual é o custo total de suprimentos em cada escritório? Que tal ordenar os resultados para ver qual escritório possui os suprimentos mais caros?<br>
 
 
 
