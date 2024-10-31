@@ -73,18 +73,44 @@ Sabre de Luz (Mace Windu) 990.29<br>
 21815.000000<br>
 
 - Qual o departamento com o menor número de funcionários?<br>
+`SELECT departamento_id, COUNT(*) AS numero_funcionarios FROM momento.funcionarios WHERE departamento_id IN (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13) GROUP BY departamento_id ORDER BY numero_funcionarios ASC LIMIT 1;`<br>
+departamento_id = 1, com 1 funcionario<br>
 
 ## Produtos
 - Pensando na relação quantidade e valor unitario, qual o produto mais valioso da empresa?<br>
+`SELECT * FROM momento.vendas ORDER BY quantidade DESC;`<br>
+`SELECT * FROM momento.produtos ORDER BY produto_price DESC;`<br>
+Uniforme do Superman, R$300.13, quantidade: 167<br>
 
 - Qual o produto mais vendido da empresa?<br>
+`SELECT * FROM momento.vendas ORDER BY quantidade DESC;`<br>
+Uniforme do Superman com 167 unidades vendidas<br>
 
 - Qual o produto menos vendido da empresa?<br>
+`SELECT * FROM momento.vendas ORDER BY quantidade ASC;`<br>
+Batarangs Oficiais, com 3 unidades vendidas<br>
 
 Escritórios
 - Quantos escritórios a "Momento" possui em cada região? (Dica: relacione as tabelas regioes e escritorios).<br>
+`SELECT * FROM momento.escritorios;`<br>
+3 nos estados unidos<br>
+1 no canada<br>
+2 no reino unido<br>
+1 em wakanda<br>
+1 na alemanha<br>
 
 - Qual é o custo total de suprimentos em cada escritório? Que tal ordenar os resultados para ver qual escritório possui os suprimentos mais caros?<br>
+`SELECT * FROM momento.suprimentos;`<br>
+1400 - 148000.00<br>
+1700 - 5050.07<br>
+1800 - 2000.00<br>
+1900 - 4000.00<br>
+2400 - 5505.70<br>
+2500 - 405000.00<br>
+3900 - 403752.85<br>
+
+
+
 
 
 
